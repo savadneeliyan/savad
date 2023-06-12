@@ -1,34 +1,52 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components';
-import FadeInSection from './Scoll';
 import 'aos/dist/aos.css';
 
 function Love() {
+    
+  const [isRevealed, setIsRevealed] = useState(false);
+  const revealRef = useRef(null);
 
-    // useEffect(() => {
-    //     Aos.init();
-    // }, [])
+  useEffect(() => {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsRevealed(true);
+          revealObserver.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.5 } // Adjust this value to change when the reveal happens
+    );
 
-    const [isVisible, setVisible] = useState(true);
-    const domRef =useRef();
-    useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => setVisible(entry.isIntersecting));
-        });
-        // console.log(domRef)
-        observer.observe(domRef.current);
-        return () => observer.unobserve(domRef.current);
-    }, []);
+    if (revealRef.current) {
+      revealObserver.observe(revealRef.current);
+    }
+
+    return () => {
+      if (revealRef.current) {
+        revealObserver.unobserve(revealRef.current);
+      }
+    };
+  }, []);
     
 
   return (
-        <Section  >
-            <Container>
-                <Head isVisible={isVisible} ref={domRef} ><Span >Crafted with love.</Span></Head>
-                <PWrapper><P>These are a selection of my recent works.</P></PWrapper>
-            </Container>
-        </Section>
-  )
+    <Section>
+      <Container ref={revealRef}>
+        {isRevealed && (
+          <>
+            <Head>
+              <Span>Crafted with love.</Span>
+            </Head>
+            <PWrapper>
+              <P>These are a selection of my recent works.</P>
+            </PWrapper>
+          </>
+        )}
+      </Container>
+    </Section>
+  );
 }
 
 export default Love
@@ -65,7 +83,7 @@ const Head = styled.h1`
         display: block;
         background-color: #000;
         height: 50px;
-        animation:  ${props => props.isVisible ? 'slide 1s linear' : ''}; 
+        animation: slide 1s linear; 
     }
 `;
 

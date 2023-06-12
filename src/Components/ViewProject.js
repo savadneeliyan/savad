@@ -1,28 +1,56 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import FadeInSection from "./Scoll";
 import "aos/dist/aos.css";
 
 function ViewProject() {
   
+  const [isRevealed, setIsRevealed] = useState(false);
+  const revealRef = useRef(null);
+
+  useEffect(() => {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsRevealed(true);
+          revealObserver.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.5 } // Adjust this value to change when the reveal happens
+    );
+
+    if (revealRef.current) {
+      revealObserver.observe(revealRef.current);
+    }
+
+    return () => {
+      if (revealRef.current) {
+        revealObserver.unobserve(revealRef.current);
+      }
+    };
+  }, []);
 
   return (
     <Section>
-      <Container>
-        <PWrapper>
-          <P>THERE'S MORE</P>
-        </PWrapper>
-        <Head>
-          <Span href="#">
-            view all projects
-            <svg width="50" height="30" viewBox="0 0 10 6" fill="none">
-              <path
-                d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z"
-                fill="black"
-              />
-            </svg>
-          </Span>
-        </Head>
+      <Container ref={revealRef}>
+        {isRevealed && (
+          <>
+            <PWrapper>
+              <P>THERE'S MORE</P>
+            </PWrapper>
+            <Head>
+              <Span href="#">
+                view all projects
+                <svg width="50" height="30" viewBox="0 0 10 6" fill="none">
+                  <path
+                    d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z"
+                    fill="black"
+                  />
+                </svg>
+              </Span>
+            </Head>
+          </>
+        )}
       </Container>
     </Section>
   );

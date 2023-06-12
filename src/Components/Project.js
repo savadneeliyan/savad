@@ -5,7 +5,8 @@ function Project() {
     return (
     <>
         <Section>
-            <Wrapper>
+            <Wrapper  data-aos="fade-up"
+     data-aos-duration="3000" >
                 <ImgWrapper>
                     <Img src="https://i.pinimg.com/236x/d3/e5/45/d3e5457d3dc682951a5dd31d7b0b79db.jpg" alt="" />
                 </ImgWrapper>
@@ -28,7 +29,8 @@ function Project() {
                     </PWrapperBt>
                 </Container>
             </Wrapper>
-            <Wrapper>
+            <Wrapper  data-aos="fade-up"
+     data-aos-duration="3000">
                 <ImgWrapper>
                     <Img src="https://i.pinimg.com/236x/81/e2/d3/81e2d312113db11286e6a1dfc381c18e.jpg" alt="" />
                 </ImgWrapper>
@@ -51,7 +53,8 @@ function Project() {
                     </PWrapperBt>
                 </Container>
             </Wrapper>
-            <Wrapper>
+            <Wrapper  data-aos="fade-up"
+     data-aos-duration="3000">
                 <ImgWrapper>
                     <Img src="https://i.pinimg.com/236x/50/82/e6/5082e6e66071cd87690d9a6cb52961f0.jpg" alt="" />
                 </ImgWrapper>
