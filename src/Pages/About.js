@@ -1,8 +1,11 @@
+import Loader from '../Components/Loader';
 import React from 'react'
 
 function About() {
   return (
-    <div>About</div>
+    <div>
+        <Loader/>
+    </div>
   )
 }
 

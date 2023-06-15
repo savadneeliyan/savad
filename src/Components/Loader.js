@@ -1,110 +1,196 @@
-import { motion, useAnimation } from 'framer-motion'
-import React, { useEffect } from 'react'
+import { AnimatePresence, motion, useAnimation } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 function Loader() {
-  const controls = useAnimation();
 
-  useEffect(() => {
-    const animateName = async () => {
-      await controls.start("top");
-      await controls.start("bottom");
-    };
 
-    animateName();
-  }, []);
-    
-const transition = {duration: 1.4, ease:[.43, .13,.23,.96]}
-
+const items = ["M","O","H","A","M","M","A","D"," ","S","A","V","A","D"];
     
 const firstname = {
-  initial:{
-    y:0
+  initial: {
+    y:20,
   },
-  animate:{
-    y:0,
-    transition:{
-      delayChildren:0.6,
-      staggerChildren:0.04,
-      staggerDirection:-1
-    }
-  }
+  animate: {
+      y:0,
+      transition: {
+        staggerChildren: 0.1,
+        type: "spring",
+        stiffness: 60,
+        delayChildren: 0.5
+      },
+    },
 }
-    
-const lastname = {
-  initial:{
-    y:0
-  },
-  animate:{
-    y:0,
-    transition:{
-      delayChildren:1.5,
-      staggerChildren:0.04,
-      staggerDirection:1
-    }
-  }
-}
-    
+  
 const letter = {
-    initial:{
-        y:400
+   initial: {
+      opacity: 0,
+      y: 20,
     },
     animate: {
-        y:0,
-        transition:{duration: 1, ...transition}
-    }
+      opacity: 1,
+      y: 0,
+    },
+    exit: {
+      y: "-20px",
+      opacity: 0,
+      transition: {
+        duration: 2,
+      },
+    },
 }
 
-  return (
-    <Section  className="name-container">
-      <Header
-        className="name-top"
-        initial="initial"
-        // animate={controls}
-        variants={firstname}
-          >
-              <motion.span variants={letter}>M</motion.span>
-              <motion.span variants={letter}>O</motion.span>
-              <motion.span variants={letter}>H</motion.span>
-              <motion.span variants={letter}>A</motion.span>
-              <motion.span variants={letter}>M</motion.span>
-              <motion.span variants={letter}>M</motion.span>
-              <motion.span variants={letter}>A</motion.span>
-              <motion.span variants={letter}>D</motion.span>
-      </Header>
-      <Header
-        className="name-bottom"
-        initial="initial"
-        animate={controls}
-        variants={lastname}
-      >
-              <motion.span variants={letter}>S</motion.span>
-              <motion.span variants={letter}>A</motion.span>
-              <motion.span variants={letter}>V</motion.span>
-              <motion.span variants={letter}>A</motion.span>
-              <motion.span variants={letter}>D</motion.span>
-      </Header>
-    </Section>
+
+const backgroundTop = {
+  initial: {
+  },
+  animate: {
+    height: 0,
+    transition: {
+      duration: 1,
+      ease: "easeInOut",
+      delay:3
+    },
+  }
+};
+
+const Progress = {
+  initial: {
+    width:"12%",
+  },
+  animate: {
+    width: ["12%","12%","12%","12%","100%" ],
+    transition:{
+      ease: "easeInOut",
+      duration: 3,      
+    }
+  },
+}
+const ProgressFill = {
+  initial: {
+    width:0,
+  },
+  animate: {
+    width: "100%",
+    transition:{
+      duration: 2,
+    }
+  },
+  exit: {
+    width: "100vw",
+    marginLeft: "auto",
+    marginRight: "auto",
+    opacity: 0,
+    transition: {
+      duration: 2,
+    },
+  },
+};
+const [shouldShowComponent,setshouldShowComponent] = useState(true)
+
+
+
+
+  return (<>
+      
+        <Section  className="name-container">
+          <AnimatePresence>
+            {shouldShowComponent && (<>
+                <Header
+                  initial="initial"
+                  animate="animate"
+                  exit={"exit"}
+                  variants={firstname}
+                >
+                  {items.map((item, index) => (
+                    <motion.span key={index} variants={letter} >
+                      {item}
+                    </motion.span>
+                  ))}
+
+                </Header>
+
+                <Bar variants={Progress} 
+                initial="initial"
+                animate= "animate" 
+                    exit="exit">
+                  <BarFilling
+                    variants={ProgressFill}
+                    initial="initial"
+                    animate= "animate" 
+                    exit="exit"
+                  /> 
+                </Bar>
+                <BackgroundTop variants={backgroundTop} animate="animate"></BackgroundTop>
+                <Background variants={backgroundTop} animate="animate"></Background>
+              </>
+            )}
+          </AnimatePresence>
+        </Section> 
+        
+    </>
   );
 };
 
 
 export default Loader
 
-const Section = styled(motion.div)`
-    height:0vh;
+const Background = styled(motion.div)`
+    height:48.5vh;
     width:100vw;
-    background-color:black;
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+    z-index: -1;
+    `;
+const BackgroundTop = styled(motion.div)`
+    height:52.5vh;
+    background-color: black;
+    width:100vw;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+`;
+
+const Section = styled(motion.div)`
+    height:100vh;
+    width:100vw;
+    /* background-color:black; */
     color:#fff;
     position:relative;
-    z-index:999;
+    /* z-index:999; */
     display:flex;
+    flex-direction: column;
     align-items:center;
     justify-content:center;
-    gap:20px;
+    gap:5px;
+`;
 
-`
 const Header = styled(motion.div)`
-    font-size:30px
-`
+    font-size:10px;
+    color: #ffffffd0;
+`;
+
+const Bar = styled(motion.div)`
+  /* overflow: hidden; */
+  position: relative;
+  border-radius: 2;
+  width: 10%;
+  height: 1px;
+  background-color: #000000;
+`;
+
+
+const BarFilling = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+`;
+
 

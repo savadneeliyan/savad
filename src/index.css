@@ -144,4 +144,9 @@
   transform: unset;
 }
 
-
+*{
+  box-sizing: border-box;
+}
+#root{
+  overflow-x: hidden;
+}

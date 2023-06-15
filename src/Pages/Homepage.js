@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav2 from '../Components/Nav2';
 import Banner2 from '../Components/Banner2';
 import Love from '../Components/Love';
@@ -8,15 +8,27 @@ import Footer from '../Components/Footer';
 import Loader from '../Components/Loader';
 
 function Homepage() {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 4000); 
+  }, []);
+
   return (
     <>
-      <Loader/>
-      <Nav2 />
-      <Banner2 />
-      <Love />
-      <Project />
-      <ViewProject />
-      <Footer />
+    {isLoading ? <Loader/> :
+      <>
+        <Nav2 />
+        <Banner2 />
+        <Love />
+        <Project />
+        <ViewProject />
+        <Footer />
+      </>
+      }
     </>
   );
 }

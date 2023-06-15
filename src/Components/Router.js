@@ -8,7 +8,7 @@ import { AnimatePresence } from 'framer-motion';
 function Router() {
     return (
       <BrowserRouter>
-        <AnimatePresence  mode="wait">
+        <AnimatePresence initial={false} >
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/about" element={<About />} />
