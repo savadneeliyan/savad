@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -98,7 +99,7 @@ const ListItem = styled.li`
     
     
 `;
-const ListAnchor = styled.a`
+const ListAnchor = styled(Link)`
     text-decoration:none;
     color:#515151;
     font-size: 20px;        
@@ -136,7 +137,7 @@ function Nav2() {
               <Links>
                   <Logo>savad</Logo>
                   <List>
-                      <ListItemWrapper><ListItem><ListAnchor href='#works'><Span>About</Span></ListAnchor></ListItem></ListItemWrapper>
+                      <ListItemWrapper><ListItem><ListAnchor to='/about'><Span>About</Span></ListAnchor></ListItem></ListItemWrapper>
                       <ListItemWrapper><ListItem><ListAnchor href='#contact'><Span>Work</Span></ListAnchor></ListItem></ListItemWrapper>
                       <ListItemWrapper><ListItem><ListAnchor href='#contact'><Span>Contact</Span></ListAnchor></ListItem></ListItemWrapper>
                   </List>
