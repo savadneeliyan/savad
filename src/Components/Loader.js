@@ -94,7 +94,9 @@ const [shouldShowComponent,setshouldShowComponent] = useState(true)
   return (<>
       
         <Section  className="name-container">
-          <AnimatePresence>
+          <AnimatePresence
+            // initial={false}
+          >
             {shouldShowComponent && (<>
                 <Header
                   initial="initial"

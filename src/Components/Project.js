@@ -1,82 +1,113 @@
-import React from 'react'
+import { motion } from 'framer-motion';
+import React, { useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Project() {
+    
+    const scrollElementsRef = useRef([]);
+    // const navigate = useNavigate();
+
+    const handleClick = (index) => {
+        if (scrollElementsRef.current[index]) {
+            // scrollElementsRef.current[index].scrollIntoView({
+            //     behavior: 'smooth',
+            //     block: 'center',
+            //     inline: 'center',
+            // });
+        }
+        // navigate('/another-page');
+    };
+
+    const data =[
+        "https://i.pinimg.com/236x/d3/e5/45/d3e5457d3dc682951a5dd31d7b0b79db.jpg",
+        "https://i.pinimg.com/236x/81/e2/d3/81e2d312113db11286e6a1dfc381c18e.jpg",
+        "https://i.pinimg.com/236x/50/82/e6/5082e6e66071cd87690d9a6cb52961f0.jpg",
+
+
+    ]
     return (
     <>
         <Section>
-            <Wrapper  data-aos="fade-up"
-     data-aos-duration="3000" >
-                <ImgWrapper>
-                    <Img src="https://i.pinimg.com/236x/d3/e5/45/d3e5457d3dc682951a5dd31d7b0b79db.jpg" alt="" />
-                </ImgWrapper>
-                <Container>
-                    <FirstContainer>
-                        <div>
-                            <h5>01</h5>
-                        </div>
-                        <div>
-                            <H3>demo</H3>
-                            <Span>Web App</Span>
-                        </div>
-                    </FirstContainer>
-                    <PWrapperBt>
-                        <Anchor href='#'> See My Work 
-                            <svg width="30" height="18" viewBox="0 0 10 6" fill="none">
-                                <path d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z" fill="black"/>
-                            </svg> 
-                        </Anchor>
-                    </PWrapperBt>
-                </Container>
-            </Wrapper>
-            <Wrapper  data-aos="fade-up"
-     data-aos-duration="3000">
-                <ImgWrapper>
-                    <Img src="https://i.pinimg.com/236x/81/e2/d3/81e2d312113db11286e6a1dfc381c18e.jpg" alt="" />
-                </ImgWrapper>
-                <Container>
-                    <FirstContainer>
-                        <div>
-                            <h5>02</h5>
-                        </div>
-                        <div>
-                            <H3>demo</H3>
-                            <Span>Web App</Span>
-                        </div>
-                    </FirstContainer>
-                    <PWrapperBt>
-                        <Anchor href='#'> See My Work 
-                            <svg width="30" height="18" viewBox="0 0 10 6" fill="none">
-                                <path d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z" fill="black"/>
-                            </svg> 
-                        </Anchor>
-                    </PWrapperBt>
-                </Container>
-            </Wrapper>
-            <Wrapper  data-aos="fade-up"
-     data-aos-duration="3000">
-                <ImgWrapper>
-                    <Img src="https://i.pinimg.com/236x/50/82/e6/5082e6e66071cd87690d9a6cb52961f0.jpg" alt="" />
-                </ImgWrapper>
-                <Container>
-                    <FirstContainer>
-                        <div>
-                            <h5>03</h5>
-                        </div>
-                        <div>
-                            <H3>demo</H3>
-                            <Span>Web App</Span>
-                        </div>
-                    </FirstContainer>
-                    <PWrapperBt>
-                        <Anchor href='#'> See My Work 
-                            <svg width="30" height="18" viewBox="0 0 10 6" fill="none">
-                                <path d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z" fill="black"/>
-                            </svg> 
-                        </Anchor>
-                    </PWrapperBt>
-                </Container>
-            </Wrapper>            
+            {
+                data.map( (item , index) => (
+                    <Wrapper  key={index}
+                        // data-aos="fade-up"
+                        // data-aos-duration="500"
+                    >
+                        <ImgWrapper 
+                            ref={(el) => (scrollElementsRef.current[index] = el)}
+                        >
+                            <Img 
+                                alt='' 
+                                src={item} 
+                            />
+                        </ImgWrapper>
+                        <Container>
+                            <FirstContainer>
+                                <div style={{overflow:'hidden'}}>
+                                    <motion.h5 
+                                        key={index}
+                                        exit={{
+                                            y: 20,
+                                            transition:{
+                                                duration: 1,
+                                                delay:0.8
+                                            } 
+                                        }}
+                                    >01</motion.h5>
+                                </div>
+                                <div>
+                                    <div style={{overflow:'hidden'}}>
+                                        <H3 
+                                            key={index}
+                                            exit={{
+                                                y: 200,
+                                                transition:{
+                                                    duration: 3,
+                                                } 
+                                            }}
+                                        >
+                                            demo
+                                        </H3>
+                                    </div>
+                                    <div style={{overflow:'hidden'}}>
+                                        <Span 
+                                            key={index}
+                                            exit={{
+                                                y: 200,
+                                                transition:{
+                                                    duration: 2,
+                                                    delay:0.8
+                                                } 
+                                            }}
+                                        >
+                                            Web App
+                                        </Span>
+                                    </div>
+                                </div>
+                            </FirstContainer>
+                            <PWrapperBt
+                                key={index}
+                                exit={{
+                                    y: 20,
+                                    transition:{
+                                        duration: 1,
+                                        delay:0.8
+                                    } 
+                                }} 
+                            >
+                                <Anchor to="/about" onClick={() => handleClick(index)} > See My Work 
+                                    <svg width="30" height="18" viewBox="0 0 10 6" fill="none">
+                                        <path d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z" fill="black"/>
+                                    </svg> 
+                                </Anchor>
+                            </PWrapperBt>
+                        </Container>
+                    </Wrapper>
+                ))
+            }
+                        
         </Section>
     </>
   )
@@ -85,7 +116,7 @@ function Project() {
 export default Project;
 
 
-const Section = styled.div`
+const Section = styled(motion.div)`
     overflow: hidden;
 `;
 const Container = styled.div`
@@ -98,7 +129,7 @@ const Container = styled.div`
   padding:65px 0;
 `;
 
-const Anchor = styled.a`
+const Anchor = styled(Link)`
   text-decoration: none;
   font-size: 18px;
   text-transform: capitalize;
@@ -140,25 +171,26 @@ const PWrapperBt = styled.div`
     overflow: hidden;
 `;
 
-const H3 = styled.h3`
+const H3 = styled(motion.h3)`
     font-size:40px;
     transition:0.5s ease;
     color:#8f8e8e;
 `;
 
-const Span = styled.span`
+const Span = styled(motion.div)`
     font-size:15px;
     transition:0.5s ease;
     color:#8f8e8e;
 
 
 `;
-const ImgWrapper = styled.div`
-    width:461pxpx;
+const ImgWrapper = styled(motion.div)`
+    width:461px;
     height:300px;
     position:absolute;
     right:23px;
     transition:0.5s ease;
+    cursor: pointer;
     &::before{
         width: 0px;
         height: 210px;
@@ -173,7 +205,7 @@ const ImgWrapper = styled.div`
     }
 `;
 
-const Img = styled.img`
+const Img = styled(motion.img)`
   width: 0;
   height: 100%;
   transition:0.5s ease;
