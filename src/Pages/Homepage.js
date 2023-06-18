@@ -19,16 +19,16 @@ function Homepage() {
 
   return (
     <>
-    {/* {isLoading ? <Loader/> : */}
+    {isLoading ? <Loader/> :
       <>
         <Nav2 />
-        {/* <Banner2 /> */}
+        <Banner2 />
         <Love />
         <Project />
         <ViewProject />
         <Footer />
       </>
-      {/* } */}
+      }
     </>
   );
 }

@@ -10,11 +10,11 @@ function Project() {
 
     const handleClick = (index) => {
         if (scrollElementsRef.current[index]) {
-            // scrollElementsRef.current[index].scrollIntoView({
-            //     behavior: 'smooth',
-            //     block: 'center',
-            //     inline: 'center',
-            // });
+            scrollElementsRef.current[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'center',
+            });
         }
         // navigate('/another-page');
     };
@@ -27,90 +27,106 @@ function Project() {
 
     ]
     return (
-    <>
+      <>
         <Section>
-            {
-                data.map( (item , index) => (
-                    <Wrapper  key={index}
-                        // data-aos="fade-up"
-                        // data-aos-duration="500"
+          {data.map((item, index) => (
+            <Wrapper
+              key={index}
+              // data-aos="fade-up"
+              // data-aos-duration="500"
+            >
+              <ImgWrapper ref={(el) => (scrollElementsRef.current[index] = el)}>
+                <Img alt="" src={item} />
+              </ImgWrapper>
+              <Container>
+                <FirstContainer
+                  key={index}
+                  exit={{
+                    width: 0,
+                    transition: {
+                      duration: 1,
+                      delay: 1.2,
+                    },
+                  }}
+                >
+                  <div style={{ overflow: "hidden" }}>
+                    <motion.h5
+                      key={index}
+                      exit={{
+                        y: 20,
+                        transition: {
+                          duration: 1,
+                          delay: 0.8,
+                        },
+                      }}
                     >
-                        <ImgWrapper 
-                            ref={(el) => (scrollElementsRef.current[index] = el)}
-                        >
-                            <Img 
-                                alt='' 
-                                src={item} 
-                            />
-                        </ImgWrapper>
-                        <Container>
-                            <FirstContainer>
-                                <div style={{overflow:'hidden'}}>
-                                    <motion.h5 
-                                        key={index}
-                                        exit={{
-                                            y: 20,
-                                            transition:{
-                                                duration: 1,
-                                                delay:0.8
-                                            } 
-                                        }}
-                                    >01</motion.h5>
-                                </div>
-                                <div>
-                                    <div style={{overflow:'hidden'}}>
-                                        <H3 
-                                            key={index}
-                                            exit={{
-                                                y: 200,
-                                                transition:{
-                                                    duration: 3,
-                                                } 
-                                            }}
-                                        >
-                                            demo
-                                        </H3>
-                                    </div>
-                                    <div style={{overflow:'hidden'}}>
-                                        <Span 
-                                            key={index}
-                                            exit={{
-                                                y: 200,
-                                                transition:{
-                                                    duration: 2,
-                                                    delay:0.8
-                                                } 
-                                            }}
-                                        >
-                                            Web App
-                                        </Span>
-                                    </div>
-                                </div>
-                            </FirstContainer>
-                            <PWrapperBt
-                                key={index}
-                                exit={{
-                                    y: 20,
-                                    transition:{
-                                        duration: 1,
-                                        delay:0.8
-                                    } 
-                                }} 
-                            >
-                                <Anchor to="/about" onClick={() => handleClick(index)} > See My Work 
-                                    <svg width="30" height="18" viewBox="0 0 10 6" fill="none">
-                                        <path d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z" fill="black"/>
-                                    </svg> 
-                                </Anchor>
-                            </PWrapperBt>
-                        </Container>
-                    </Wrapper>
-                ))
-            }
-                        
+                      01
+                    </motion.h5>
+                  </div>
+                  <div>
+                    <div style={{ overflow: "hidden" }}>
+                      <H3
+                        key={index}
+                        exit={{
+                          y: 200,
+                          transition: {
+                            duration: 3,
+                          },
+                        }}
+                      >
+                        demo
+                      </H3>
+                    </div>
+                    <div style={{ overflow: "hidden" }}>
+                      <Span
+                        key={index}
+                        exit={{
+                          y: 200,
+                          transition: {
+                            duration: 2,
+                            delay: 0.8,
+                          },
+                        }}
+                      >
+                        Web App
+                      </Span>
+                    </div>
+                  </div>
+                </FirstContainer>
+                <div style={{ overflow: "hidden" }}>
+                  <PWrapperBt
+                    key={index}
+                    exit={{
+                      y: 200,
+                      transition: {
+                        duration: 0.5,
+                        delay: 0.8,
+                      },
+                    }}
+                  >
+                    <Anchor to="/about" onClick={() => handleClick(index)}>
+                      {" "}
+                      See My Work
+                      <svg
+                        width="30"
+                        height="18"
+                        viewBox="0 0 10 6"
+                        fill="none"
+                      >
+                        <path
+                          d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z"
+                          fill="black"
+                        />
+                      </svg>
+                    </Anchor>
+                  </PWrapperBt>
+                </div>
+              </Container>
+            </Wrapper>
+          ))}
         </Section>
-    </>
-  )
+      </>
+    );
 }
 
 export default Project;
@@ -167,7 +183,7 @@ const Anchor = styled(Link)`
   }
 `;
 
-const PWrapperBt = styled.div`
+const PWrapperBt = styled(motion.div)`
     overflow: hidden;
 `;
 
@@ -212,7 +228,7 @@ const Img = styled(motion.img)`
   transform: perspective(500px) rotateX(0deg) rotateY(-18deg) rotateZ(0deg);
 `;
 
-const FirstContainer = styled.div`
+const FirstContainer = styled(motion.div)`
     display:flex;
     align-items: center;
     gap:20px;
