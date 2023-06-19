@@ -36,7 +36,7 @@ function Project() {
               // data-aos-duration="500"
             >
               <ImgWrapper ref={(el) => (scrollElementsRef.current[index] = el)}>
-                <Img alt="" src={item} />
+                <Img alt="" key={index} exit={{transform: "none",zIndex:"9"}} src={item} />
               </ImgWrapper>
               <Container>
                 <FirstContainer

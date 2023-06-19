@@ -19,7 +19,7 @@ function Homepage() {
 
   return (
     <>
-    {isLoading ? <Loader/> :
+    {/* {isLoading ? <Loader/> : */}
       <>
         <Nav2 />
         <Banner2 />
@@ -28,7 +28,7 @@ function Homepage() {
         <ViewProject />
         <Footer />
       </>
-      }
+      {/* } */}
     </>
   );
 }

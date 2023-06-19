@@ -1,25 +1,31 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 
+const widthKeyframes = {
+    width: ["390px", "390px", "390px", "390px", "1000px"],
+    height: ["300px", "300px", "300px", "300px", "800px"],
+};
 
 const opening = {
     initial: {
-        width: "390px",
-        right: "0px",
+        width: widthKeyframes.width[0],
+        right: 0,
         height:"100px",
         position: "absolute",
         top: 0,
         bottom: 0,
         left: "auto",
-        margin: "auto"   
+        margin: "auto",
+        transform: "perspective(500px) rotateX(0deg) rotateY(-18deg) rotateZ(0deg)"
     },
     animate: {
         left: 0,
-        width: "100%",
-        height: "100vh",
+        width: ["390px", "390px", "390px", "390px", "1000px"],
+        height: ["300px", "300px", "300px", "300px", "800px"],
+        transform: "none",
         transition: {
-            duration: 1,
-            delay:1
+            duration: 2,
+            // delay:1
         },
     },
     exit:{
