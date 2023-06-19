@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 function Loader() {

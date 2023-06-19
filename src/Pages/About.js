@@ -1,12 +1,10 @@
-import Loader from '../Components/Loader';
 import React from 'react'
-import ViewProject from '../Components/ViewProject';
+import ProjectPage from '../Components/ProjectPage'
 
 function About() {
   return (
     <div>
-        {/* <Loader/> */}
-        <ViewProject/>
+      <ProjectPage/>
     </div>
   )
 }

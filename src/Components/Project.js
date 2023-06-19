@@ -10,11 +10,11 @@ function Project() {
 
     const handleClick = (index) => {
         if (scrollElementsRef.current[index]) {
-            scrollElementsRef.current[index].scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
-                inline: 'center',
-            });
+            // scrollElementsRef.current[index].scrollIntoView({
+            //     behavior: 'smooth',
+            //     block: 'center',
+            //     inline: 'center',
+            // });
         }
         // navigate('/another-page');
     };
