@@ -7,6 +7,7 @@ function Project() {
     
   const scrollElementsRef = useRef([]);
    const [clickedDiv, setClickedDiv] = useState(null);
+   const [isClicked, setClicked] = useState(false);
 
     const handleClick = (index) => {
         if (scrollElementsRef.current[index]) {
@@ -16,6 +17,7 @@ function Project() {
                 inline: 'center',
             });
           setClickedDiv(index);
+          setClicked(true)
         }
     };
 
@@ -32,8 +34,7 @@ function Project() {
           {data.map((item, index) => (
             <Wrapper
               key={index}
-              // data-aos="fade-up"
-              // data-aos-duration="500"
+              isClicked={isClicked}
             >
               <ImgWrapper
                 ref={(el) => (scrollElementsRef.current[index] = el)}
@@ -44,15 +45,13 @@ function Project() {
                   transform: "none",
                   zIndex: "9",
                 }}
-                style={{
-                  width: clickedDiv === index ? "430px" : "auto", 
-                }}
+                
               >
                 <Img
                   alt=""
                   key={index}
                   exit={{
-                    width: "430px",
+                    width:  clickedDiv === index ?  "430px" : "0",
                     left: 0,
                     transform: "none",
                     zIndex: "9",
@@ -264,11 +263,11 @@ const FirstContainer = styled(motion.div)`
 `;
 
 const Wrapper = styled.div`
-    possition:absolute;
     background-color: #f8f8f8;
     color: #000;
     transition:0.5s linear;
     border-bottom: 1px solid #e8e8e8;
+    pointer-events: ${props => props.isClicked ? "none" : "all"};;
     
     &:hover{
         background-color: #fff;
