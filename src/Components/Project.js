@@ -1,22 +1,22 @@
 import { motion } from 'framer-motion';
-import React, { useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useRef, useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Project() {
     
-    const scrollElementsRef = useRef([]);
-    // const navigate = useNavigate();
+  const scrollElementsRef = useRef([]);
+   const [clickedDiv, setClickedDiv] = useState(null);
 
     const handleClick = (index) => {
         if (scrollElementsRef.current[index]) {
-            // scrollElementsRef.current[index].scrollIntoView({
-            //     behavior: 'smooth',
-            //     block: 'center',
-            //     inline: 'center',
-            // });
+            scrollElementsRef.current[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'center',
+            });
+          setClickedDiv(index);
         }
-        // navigate('/another-page');
     };
 
     const data =[
@@ -35,8 +35,30 @@ function Project() {
               // data-aos="fade-up"
               // data-aos-duration="500"
             >
-              <ImgWrapper ref={(el) => (scrollElementsRef.current[index] = el)}>
-                <Img alt="" key={index} exit={{transform: "none",zIndex:"9"}} src={item} />
+              <ImgWrapper
+                ref={(el) => (scrollElementsRef.current[index] = el)}
+                key={index}
+                exit={{
+                  margin: "auto",
+                  left: 0,
+                  transform: "none",
+                  zIndex: "9",
+                }}
+                style={{
+                  width: clickedDiv === index ? "430px" : "auto", 
+                }}
+              >
+                <Img
+                  alt=""
+                  key={index}
+                  exit={{
+                    width: "430px",
+                    left: 0,
+                    transform: "none",
+                    zIndex: "9",
+                  }}
+                  src={item}
+                />
               </ImgWrapper>
               <Container>
                 <FirstContainer
