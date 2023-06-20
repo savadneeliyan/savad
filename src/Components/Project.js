@@ -30,7 +30,11 @@ function Project() {
     ]
     return (
       <>
-        <Section>
+        <Section 
+          initial={{display:"none"}}
+          whileInView={{display:"block"}}
+          viewport={{ once: true, amount: 1 }}
+        >
           {data.map((item, index) => (
             <Wrapper
               key={index}
