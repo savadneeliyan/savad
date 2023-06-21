@@ -1,58 +1,35 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import "aos/dist/aos.css";
+import { motion } from "framer-motion";
 
-function ViewProject() {
-  
-  const [isRevealed, setIsRevealed] = useState(false);
-  const revealRef = useRef(null);
+function ViewProject() { 
 
-  useEffect(() => {
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          setIsRevealed(true);
-          revealObserver.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.5 } // Adjust this value to change when the reveal happens
-    );
-
-    if (revealRef.current) {
-      revealObserver.observe(revealRef.current);
-    }
-
-    return () => {
-      if (revealRef.current) {
-        revealObserver.unobserve(revealRef.current);
-      }
-    };
-  }, []);
 
   return (
-    <Section>
-      <Container ref={revealRef}>
-        {isRevealed && (
+    <>
+      <Section>
+        <Container>
           <>
-            <PWrapper>
-              <P>THERE'S MORE</P>
-            </PWrapper>
-            <Head>
-              <Span href="#">
-                view all projects
-                <svg width="50" height="30" viewBox="0 0 10 6" fill="none">
-                  <path
-                    d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z"
-                    fill="black"
-                  />
-                </svg>
-              </Span>
-            </Head>
-          </>
-        )}
-      </Container>
-    </Section>
+              <PWrapper>
+                <P initial={{y:"0px"}} whileInView={{x:"20px" }} transition={{ duration:0.5,delay:.3}} >THERE'S MORE</P>
+              </PWrapper>
+              <Head>
+                  <motion.div initial={{width:"0%",height:"100%", position:"absolute", background:"#000"}} whileInView={{width:"100%", transform:"translateX(100%)"}} transition={{ duration:1}}></motion.div>
+                <Span href="#" initial={{y:"50px"}} whileInView={{y:"0px" }} transition={{ duration:0.5,delay:.3}}>
+                  view all projects
+                  <svg width="50" height="30" viewBox="0 0 10 6" fill="none">
+                    <path
+                      d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z"
+                      fill="black"
+                    />
+                  </svg>
+                </Span>
+              </Head>
+            </>
+        </Container>
+      </Section>
+    </> 
   );
 }
 
@@ -63,7 +40,7 @@ const Section = styled.div`
   background-color: #fff;
   color: #000;
   display: flex;
-  align-item: center;
+  align-items: center;
   justify-content: start;
 `;
 
@@ -81,7 +58,7 @@ const Head = styled.h1`
   line-height: 50px;
   margin-bottom: 10px;
   &::before {
-    content: "";
+    /* content: ""; */
     position: absolute;
     top: 0;
     transition: 0.5s linear;
@@ -89,15 +66,15 @@ const Head = styled.h1`
     display: block;
     background-color: #000;
     height: 50px;
-    animation: slide 1s linear;
+    /* animation: slide 1s linear; */
   }
 `;
 
-const Span = styled.a`
+const Span = styled(motion.a)`
   text-decoration: none;
   color:#000;
   overflow-y: hidden;
-  animation:slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both;
+  /* animation:slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both; */
   display:flex;
   align-items: center;
   justify-content: center;
@@ -113,12 +90,12 @@ const PWrapper = styled.div`
   margin-top: 100px;
 `;
 
-const P = styled.p`
-  position: relative;
+const P = styled(motion.p)`
+  /* position: relative; */
   width: fit-content;
   font-size: 12px;
   line-height: 20px;
   margin-bottom: 10px;
   height: 20px;
-  animation: slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both;
+  /* animation: slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both; */
 `;

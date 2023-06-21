@@ -137,8 +137,8 @@ function Nav2() {
               <Links>
                   <Logo>savad</Logo>
                   <List>
-                      <ListItemWrapper><ListItem><ListAnchor to='/about'><Span>About</Span></ListAnchor></ListItem></ListItemWrapper>
-                      <ListItemWrapper><ListItem><ListAnchor href='#contact'><Span>Work</Span></ListAnchor></ListItem></ListItemWrapper>
+                      <ListItemWrapper><ListItem><ListAnchor to='/us'><Span>About</Span></ListAnchor></ListItem></ListItemWrapper>
+                      <ListItemWrapper><ListItem><ListAnchor href='/about'><Span>Work</Span></ListAnchor></ListItem></ListItemWrapper>
                       <ListItemWrapper><ListItem><ListAnchor href='#contact'><Span>Contact</Span></ListAnchor></ListItem></ListItemWrapper>
                   </List>
               </Links>

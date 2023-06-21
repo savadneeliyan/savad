@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-function Project() {
+function Project() { 
     
   const scrollElementsRef = useRef([]);
    const [clickedDiv, setClickedDiv] = useState(null);
@@ -22,16 +22,14 @@ function Project() {
     };
 
     const data =[
-        "https://i.pinimg.com/236x/d3/e5/45/d3e5457d3dc682951a5dd31d7b0b79db.jpg",
-        "https://i.pinimg.com/236x/81/e2/d3/81e2d312113db11286e6a1dfc381c18e.jpg",
-        "https://i.pinimg.com/236x/50/82/e6/5082e6e66071cd87690d9a6cb52961f0.jpg",
-
-
+      "https://i.pinimg.com/236x/d3/e5/45/d3e5457d3dc682951a5dd31d7b0b79db.jpg",
+      "https://i.pinimg.com/236x/81/e2/d3/81e2d312113db11286e6a1dfc381c18e.jpg",
+      "https://i.pinimg.com/236x/50/82/e6/5082e6e66071cd87690d9a6cb52961f0.jpg",
     ]
     return (
       <>
         <Section 
-          initial={{display:"none"}}
+          initial={{display:"block"}}
           whileInView={{display:"block"}}
           viewport={{ once: true, amount: 1 }}
         >
@@ -69,8 +67,8 @@ function Project() {
                   exit={{
                     width: 0,
                     transition: {
-                      duration: 1,
-                      delay: 1.2,
+                      // duration: 1,
+                      delay: .2,
                     },
                   }}
                 >
@@ -80,7 +78,7 @@ function Project() {
                       exit={{
                         y: 20,
                         transition: {
-                          duration: 1,
+                          // duration: 1,
                           delay: 0.8,
                         },
                       }}
@@ -95,7 +93,7 @@ function Project() {
                         exit={{
                           y: 200,
                           transition: {
-                            duration: 3,
+                            // duration: 1,
                           },
                         }}
                       >
@@ -108,7 +106,7 @@ function Project() {
                         exit={{
                           y: 200,
                           transition: {
-                            duration: 2,
+                            // duration: 2,
                             delay: 0.8,
                           },
                         }}
@@ -124,7 +122,7 @@ function Project() {
                     exit={{
                       y: 200,
                       transition: {
-                        duration: 0.5,
+                        // duration: 0.5,
                         delay: 0.8,
                       },
                     }}

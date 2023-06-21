@@ -1,49 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components';
 import 'aos/dist/aos.css';
-
+import { motion } from 'framer-motion';
+ 
 function Love() {
-    
-  const [isRevealed, setIsRevealed] = useState(false);
-  const revealRef = useRef(null);
-
-  useEffect(() => {
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          setIsRevealed(true);
-          revealObserver.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.5 } // Adjust this value to change when the reveal happens
-    );
-
-    if (revealRef.current) {
-      revealObserver.observe(revealRef.current);
-    }
-
-    return () => {
-      if (revealRef.current) {
-        revealObserver.unobserve(revealRef.current);
-      }
-    };
-  }, []);
-    
 
   return (
     <Section>
-      <Container ref={revealRef}>
-        {isRevealed && (
+      <Container >
           <>
-            <Head>
-              <Span>Crafted with love.</Span>
+            <Head >
+              <Span initial={{color:"#fff"}} whileInView={{color:"#000",y:"20px"}} transition={{ delay:1}}>Crafted with love.</Span>
+              <motion.div initial={{width:"0%",top:0, height:"100%", position:"absolute", background:"#000"}} whileInView={{width:"100%", transform:"translateX(100%)"}} transition={{ duration:1}}></motion.div>
             </Head>
             <PWrapper>
-              <P>These are a selection of my recent works.</P>
+              <P initial={{y:"30px"}} whileInView={{y:"0px" }} transition={{ duration:0.5}}>These are a selection of my recent works.</P>
             </PWrapper>
           </>
-        )}
       </Container>
     </Section>
   );
@@ -57,7 +30,7 @@ const Section = styled.div`
     background-color:#fff;
     color: #000;
     display: flex;
-    align-item:center;
+    align-items:center;
     justify-content:start;
 `;
 
@@ -67,14 +40,14 @@ const Container = styled.div`
     margin:auto;
 `;
 
-const Head = styled.h1`
+const Head = styled(motion.h1)`
     overflow: hidden;
     position: relative;
     width: fit-content;
     font-size: 40px;
     line-height: 50px;
     margin-bottom: 10px;
-    &::before{
+    /* &::before{
         content:"";
         position: absolute;
         top: 0;
@@ -84,12 +57,12 @@ const Head = styled.h1`
         background-color: #000;
         height: 50px;
         animation: slide 1s linear; 
-    }
+    } */
 `;
 
-const Span = styled.span`
-    overflow-y: hidden;
-    animation: ${props => props.isVisible ? 'slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both' : ''};
+const Span = styled(motion.span)`
+    /* overflow-y: hidden; */
+    /* animation: ${props => props.isVisible ? 'slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both' : ''}; */
 `;
 
 const PWrapper = styled.div`
@@ -97,12 +70,12 @@ const PWrapper = styled.div`
     margin-top:100px;
 `;
 
-const P = styled.p`
+const P = styled(motion.p)`
     position: relative;
     width: fit-content;
     font-size: 20px;
     line-height: 20px;
     margin-bottom: 10px;
     height: 20px;
-    animation: slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both;
+    /* animation: slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both; */
 `;
