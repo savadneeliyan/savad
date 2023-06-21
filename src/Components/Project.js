@@ -34,7 +34,7 @@ function Project() {
           viewport={{ once: true, amount: 1 }}
         >
           {data.map((item, index) => (
-            <Wrapper
+            <Wrapper className={"hello"+index}
               key={index}
               isClicked={isClicked}
             >
@@ -128,7 +128,6 @@ function Project() {
                     }}
                   >
                     <Anchor to="/about" onClick={() => handleClick(index)}>
-                      {" "}
                       See My Work
                       <svg
                         width="30"

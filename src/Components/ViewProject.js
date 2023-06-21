@@ -57,17 +57,6 @@ const Head = styled.h1`
   font-size: 40px;
   line-height: 50px;
   margin-bottom: 10px;
-  &::before {
-    /* content: ""; */
-    position: absolute;
-    top: 0;
-    transition: 0.5s linear;
-    height: 100%;
-    display: block;
-    background-color: #000;
-    height: 50px;
-    /* animation: slide 1s linear; */
-  }
 `;
 
 const Span = styled(motion.a)`
