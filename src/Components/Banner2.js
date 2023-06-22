@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { motion } from 'framer-motion';
 
 function Banner2() {
 
@@ -11,7 +11,8 @@ function Banner2() {
   return (
     <>
         <Section>
-            <Container>
+            <motion.div className='page' exit={{width:"100%", transition:{ duration: 1}}}></motion.div>
+            <Container exit={{x:"100%", transition:{ duration: 1}}}>
                 <Wrapper>
                     <Right>
                         <Circle></Circle>
@@ -66,7 +67,7 @@ const Section = styled.div`
     position: relative;
 `;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
     max-width:1200px;
     width:100%;
     margin: auto;

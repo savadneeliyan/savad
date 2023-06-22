@@ -47,22 +47,9 @@ const Head = styled(motion.h1)`
     font-size: 40px;
     line-height: 50px;
     margin-bottom: 10px;
-    /* &::before{
-        content:"";
-        position: absolute;
-        top: 0;
-        transition: 0.5s linear;
-        height: 100%;
-        display: block;
-        background-color: #000;
-        height: 50px;
-        animation: slide 1s linear; 
-    } */
 `;
 
 const Span = styled(motion.span)`
-    /* overflow-y: hidden; */
-    /* animation: ${props => props.isVisible ? 'slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both' : ''}; */
 `;
 
 const PWrapper = styled.div`

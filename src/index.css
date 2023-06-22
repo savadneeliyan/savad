@@ -174,3 +174,22 @@
   background: black; 
   border-radius: 0px;
 }
+
+.page{
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  background-color: black;
+  z-index: 999;
+}
+.page2{
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  z-index: 999;
+  overflow-x: hidden;
+}
