@@ -9,7 +9,7 @@ import Projectpage from '../Pages/Projectpage';
 function Router() {
   const location = useLocation();
     return (
-      <AnimatePresence initial={true} exitBeforeEnte  mode="wait">
+      <AnimatePresence initial={true} mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
