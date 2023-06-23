@@ -193,3 +193,7 @@
   z-index: 999;
   overflow-x: hidden;
 }
+li{
+  list-style-type: none;
+  color: #474747;
+}

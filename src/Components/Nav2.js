@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 
 
@@ -136,10 +136,10 @@ function Nav2() {
           <Container>
               <Links>
                   <Logo>savad</Logo>
-                  <List>
+                  <List style={{gap:"20px"}}>
                       <ListItemWrapper><ListItem><ListAnchor to='/us'><Span>About</Span></ListAnchor></ListItem></ListItemWrapper>
-                      <ListItemWrapper><ListItem><ListAnchor href='/about'><Span>Work</Span></ListAnchor></ListItem></ListItemWrapper>
-                      <ListItemWrapper><ListItem><ListAnchor href='#contact'><Span>Contact</Span></ListAnchor></ListItem></ListItemWrapper>
+                      <ListItemWrapper><ListItem><ListAnchor to='/about'><Span>Work</Span></ListAnchor></ListItem></ListItemWrapper>
+                      <ListItemWrapper><ListItem><ListAnchor to='/contact'><Span>Contact</Span></ListAnchor></ListItem></ListItemWrapper>
                   </List>
               </Links>
               {/* <Icons>
