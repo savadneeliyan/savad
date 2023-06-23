@@ -26,7 +26,7 @@ function AboutBanner() {
             </div>
             <Img>
                 <motion.div initial={{width:"0%",top:0, height:"100%", position:"absolute", background:"#000"}} whileInView={{width:"100%", transform:"translateX(100%)"}} transition={{ duration:1}}></motion.div>
-                <motion.img initial={{ y:"320px", width:"100%", height:"100%",  objectFit:"cover"}} whileInView={{y:"0px"}} transition={{ delay:1, duration:1}} src="https://images.pexels.com/photos/10004724/pexels-photo-10004724.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" />
+                <motion.img initial={{ y:"320px", width:"100%", height:"100%",  objectFit:"cover"}} whileInView={{y:"0px"}} transition={{ delay:2, duration:1}} src="https://images.pexels.com/photos/10004724/pexels-photo-10004724.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" />
             </Img>
         </Container>
     </Wrapper>
