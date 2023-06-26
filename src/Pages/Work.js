@@ -11,12 +11,9 @@ function Work() {
 const container = {
   hidden: { opacity: 1, scale: 1 },
   visible: {
-    opacity: 1,
-    scale: 1,
     transition: {
       delayChildren: 1,
-      staggerChildren: .3,
-      delay:1
+      staggerChildren: .1,
     }
   }
 }
@@ -29,6 +26,51 @@ const item = {
 
   }
 }
+const items = {
+  hidden: { y:50,marginBottom:0},
+  visible: {
+    y: 0,
+    transition:{ delay: 1.5, duration: 1 }, 
+    // viewport:{ once: true }
+  }
+}
+
+
+  
+const Black = {
+  hidden:{width: "0%", top: 0, height: "100%", position: "absolute", background: "#000"},
+  visible:{ 
+    width: "100%", x: ["0%", "0%", "0%", "100%"],
+    // transition:{ duration: 1 },
+    // viewport:{ once: true }
+  },
+  
+}
+
+
+const project = [
+  {
+    url:"https://github.com/",
+    name:"Git Project 1"
+  },
+  {
+    url:"https://github.com/",
+    name:"Git Project 2"
+  },
+  {
+    url:"https://github.com/",
+    name:"Git Project 3"
+  },
+  {
+    url:"https://github.com/",
+    name:"Git Project 4"
+  },
+  {
+    url:"https://github.com/",
+    name:"Git Project 5"
+  }
+]
+
 
 
 
@@ -60,7 +102,7 @@ const item = {
         <Project />
 
 
-        <motion.div style={{width:"1200px", margin:"100px auto"}}>
+        <motion.div style={{width:"1200px", margin:"100px auto"}} exit={{opacity:0}}>
           <motion.div style={{ overflow:"hidden", position:"relative", width:"fit-content" }}>
             <motion.div initial={{ width: "0%", top: 0, height: "100%", position: "absolute", background: "#000"}}
               whileInView={{ width: "100%", x: ["0%", "0%", "0%", "100%"] }}
@@ -75,17 +117,38 @@ const item = {
             <motion.p style={{y:"20px",margin:"30px 0", fontSize:"25px",lineHeight:"40px", opacity:0}} whileInView={{opacity:1, y:0}} viewport={{once:true}} transition={{ delay:1, duration: 1 }}>Here are some of my projects that I created during my spare time. I constantly keep on improving my skills by making these fun projects. These projects are available on my github repository</motion.p>
           </motion.div>
 
-          <motion.ul initial="hidden" variants={container} animate="visible" viewport={{once: true}}>
-            <List key={1} variants={item} >git project 1</List>
-            <List key={1} variants={item} >git project 2</List>
-            <List key={1} variants={item} >git project 3</List>
-            <List key={1} variants={item} >git project 4</List>
-            <List key={1} variants={item} >git project 5</List>
-            <List key={1} variants={item} >git project 6</List>
-            <List key={1} variants={item} >git project 7</List>
-            <List key={1} variants={item} >git project 8</List>
-            <List key={1} variants={item} >git project 9</List>
-            <List key={1} variants={item} >git project 10</List>
+          <motion.ul initial="hidden" variants={container} whileInView="visible" viewport={{once: true}}>
+            {/* <List key={1} variants={item} >
+              <motion.div variants={Black}
+              ></motion.div>
+              <List variants={items}>
+                Github Projects
+              </List>
+            </List> */}
+            
+            {
+              project.map((item, index) =>{
+                return (
+                  <div style={{display:"flex",gap:"20px",alignItems:"center"}}>
+                    <h4>/ {index}</h4>
+                    <List key={index} variants={item} >
+                      <motion.div variants={Black}
+                      ></motion.div>
+                        <List variants={items}>
+                          <a target="_blank"  style={{color:"#000"}}  href={item.url}>{"<src /> "}</a>
+                        </List>
+                    </List>
+                    <List key={index} variants={item} >
+                      <motion.div variants={Black}
+                      ></motion.div>
+                        <List variants={items}>
+                          {item.name}
+                        </List>
+                    </List>
+                  </div>
+                )
+              })
+            }
           </motion.ul>
         </motion.div>
 
@@ -111,7 +174,7 @@ const Banner = styled(motion.div)`
   background:url(/images/WorkBg.png);
   background-repeat:no-repeat;
   background-position:center center;
-  background-size:600px
+  background-size:600px;
 `;
 
 const Title = styled(motion.h2)`
@@ -129,4 +192,7 @@ const List = styled(motion.li)`
   font-size:24px;
   line-height:34px;
   margin-bottom:20px;
+  overflow: hidden;
+  position: relative;
+  width: fit-content;
 `;
