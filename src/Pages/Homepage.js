@@ -5,6 +5,7 @@ import Love from '../Components/Love';
 import Project from '../Components/Project';
 import ViewProject from '../Components/ViewProject';
 import Footer from '../Components/Footer';
+import Loader from '../Components/Loader';
 
 function Homepage() {
 
@@ -27,7 +28,7 @@ function Homepage() {
         <ViewProject />
         <Footer />
       </>
-{/* } */}
+ {/* }  */}
     </>
   );
 }

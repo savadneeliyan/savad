@@ -9,8 +9,8 @@ import Nav2 from '../Components/Nav2';
 function Projectpage() {
   return (
     <div>
-       <Nav2 />
-      <AnimatePresence initial={false} mode="wait">
+      <Nav2 />
+      <AnimatePresence initial={true} mode="wait">
         <motion.div
           className="page2"
           animate={{
@@ -21,6 +21,11 @@ function Projectpage() {
           }}
         ></motion.div>
       </AnimatePresence>
+      <motion.div
+        className="page"
+        key="index"
+        exit={{ width: "100%", transition: { duration: 1 } }}
+      ></motion.div>
       <AboutBanner />
       <Footer />
     </div>

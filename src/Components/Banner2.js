@@ -10,49 +10,89 @@ function Banner2() {
 
   return (
     <>
-        <Section>
-            <motion.div className='page' exit={{width:"100%", transition:{ duration: 1}}}></motion.div>
-            <Container exit={{x:"100%", transition:{ duration: 1}}}>
-                <Wrapper>
-                    <Right>
-                        <Circle></Circle>
-                        <H1><Span>Mern Stack</Span></H1>
-                        <H1><Span> developer.</Span></H1>
-                        <PWrapper>
-                            <P>Hi I'm Mohammad Savad, a passionate Front-end Developer & Mern Stack</P>
-                        </PWrapper>
-                        <PWrapper>
-                            <P>Developer based in the Kerela.</P>
-                        </PWrapper>
-                        <PWrapperBt>
-                            <Anchor href='#'> See My Work 
-                                <svg width="50" height="30" viewBox="0 0 10 6" fill="none">
-                                    <path d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z" fill="black"/>
-                                </svg> 
-                            </Anchor>
-                        </PWrapperBt>
-                        <List>
-                            <ListItemWrapper><ListItem><ListAnchor href='#WhoWeAre'>Linkdln   </ListAnchor></ListItem></ListItemWrapper>
-                                <Slash>/</Slash>
-                            <ListItemWrapper><ListItem><ListAnchor href='#works'><Spans> GitHub </Spans></ListAnchor></ListItem></ListItemWrapper>
-                        </List>
-                    </Right>
-                    <Left>
-                        <Bar1 />
-                        <Img src="/images/bg.png" alt="" />
-                        <Bar2/>
-                    </Left>
-                </Wrapper>
-                    <ScrollDown onClick={scrollToSection}> Scroll Down
-                        <svg width="40" height="24  " viewBox="0 0 10 6" fill="none">
-                            <path d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z" fill="black"/>
-                        </svg> 
-                    </ScrollDown>
-            </Container>
-        </Section>
-    </>
+        <Section>  
+              
+            <motion.div
+            className="page"
+            key="index"
+            exit={{ width: "100%", transition: { duration: 1 } }}
+            ></motion.div>
+            <motion.div
+            className="page2"
+            animate={{
+                left: "auto",
+                right: 0,
+                width: "0",
+                transition: { duration: 0.5 },
+            }}
+            ></motion.div>
 
-  )
+        <Container exit={{ x: "100%", transition: { duration: 1 } }}>
+          <Wrapper>
+            <Right>
+              <Circle></Circle>
+              <H1>
+                <Span>Mern Stack</Span>
+              </H1>
+              <H1>
+                <Span> developer.</Span>
+              </H1>
+              <PWrapper>
+                <P>
+                  Hi I'm Mohammad Savad, a passionate Front-end Developer & Mern
+                  Stack
+                </P>
+              </PWrapper>
+              <PWrapper>
+                <P>Developer based in the Kerela.</P>
+              </PWrapper>
+              <PWrapperBt>
+                <Anchor href="#">
+                  See My Work
+                  <svg width="50" height="30" viewBox="0 0 10 6" fill="none">
+                    <path
+                      d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z"
+                      fill="black"
+                    />
+                  </svg>
+                </Anchor>
+              </PWrapperBt>
+              <List>
+                <ListItemWrapper>
+                  <ListItem>
+                    <ListAnchor href="#WhoWeAre">Linkdln </ListAnchor>
+                  </ListItem>
+                </ListItemWrapper>
+                <Slash>/</Slash>
+                <ListItemWrapper>
+                  <ListItem>
+                    <ListAnchor href="#works">
+                      <Spans> GitHub </Spans>
+                    </ListAnchor>
+                  </ListItem>
+                </ListItemWrapper>
+              </List>
+            </Right>
+            <Left>
+              <Bar1 />
+              <Img src="/images/bg.png" alt="" />
+              <Bar2 />
+            </Left>
+          </Wrapper>
+          <ScrollDown onClick={scrollToSection}>
+            {" "}
+            Scroll Down
+            <svg width="40" height="24  " viewBox="0 0 10 6" fill="none">
+              <path
+                d="M6.71627 0L6.27434 0.441934L8.14928 2.31688H0V2.94189H8.14922L6.27434 4.81678L6.71627 5.25871L9.34566 2.62936L6.71627 0Z"
+                fill="black"
+              />
+            </svg>
+          </ScrollDown>
+        </Container>
+      </Section>
+    </>
+  );
 }
 
 export default Banner2

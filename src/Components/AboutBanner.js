@@ -7,22 +7,22 @@ function AboutBanner() {
       <>
         <Wrapper>
           <Container>
-          <div style={{position:"absolute",  transform: "rotate(-90deg)", top:"50%", left:"50px", margin:"auto" }}>
-                <Overflow style={{position:"relative", marginBottom:"60px"}}>
-                    <motion.div
-                        initial={{
-                            width: "0%",
-                            top: 0,
-                            height: "100%",
-                            position: "absolute",
-                            background: "#000",
-                        }}
-                        whileInView={{ width: "100%", x: ["0%", "0%", "0%", "100%"] }}
-                        transition={{ duration: 1 }}
-                        viewport={{ once: true }}
-                    ></motion.div>
-                    <Side initial={{y:10}} whileInView={{y:0}} transition={{delay:1, transition:1}}> ABOUT </Side>
-                </Overflow>
+            <div style={{position:"absolute",  transform: "rotate(-90deg)", top:"50%", left:"50px", margin:"auto" }}>
+              <Overflow style={{position:"relative", marginBottom:"60px"}}>
+                  <motion.div
+                      initial={{
+                          width: "0%",
+                          top: 0,
+                          height: "100%",
+                          position: "absolute",
+                          background: "#000",
+                      }}
+                      whileInView={{ width: "100%", x: ["0%", "0%", "0%", "100%"] }}
+                      transition={{ duration: 1 }}
+                      viewport={{ once: true }}
+                  ></motion.div>
+                  <Side initial={{y:10}} whileInView={{y:0}} transition={{delay:1, transition:1}}> ABOUT </Side>
+              </Overflow>
             </div>
             <div>
               <Head>

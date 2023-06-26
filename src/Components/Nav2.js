@@ -34,10 +34,13 @@ const Links = styled.div`
     width: 100%;
     gap:50px;
 `
-const Logo = styled.h1`
-    color:#515151;
-    font-size: 20px;;
-`
+const Logo = styled(Link)`
+  color: #515151;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration:none;
+`;
 const List = styled.ul`
     display:flex;
     align-items:center;
@@ -132,24 +135,41 @@ const Span = styled.span`
 
 function Nav2() {
   return (
-      <Section>
-          <Container>
-              <Links>
-                  <Logo>savad</Logo>
-                  <List style={{gap:"20px"}}>
-                      <ListItemWrapper><ListItem><ListAnchor to='/us'><Span>About</Span></ListAnchor></ListItem></ListItemWrapper>
-                      <ListItemWrapper><ListItem><ListAnchor to='/about'><Span>Work</Span></ListAnchor></ListItem></ListItemWrapper>
-                      <ListItemWrapper><ListItem><ListAnchor to='/contact'><Span>Contact</Span></ListAnchor></ListItem></ListItemWrapper>
-                  </List>
-              </Links>
-              {/* <Icons>
+    <Section>
+      <Container>
+        <Links>
+          <Logo to='/'>savad</Logo>
+          <List style={{ gap: "20px" }}>
+            <ListItemWrapper>
+              <ListItem>
+                <ListAnchor to="/us">
+                  <Span>About</Span>
+                </ListAnchor>
+              </ListItem>
+            </ListItemWrapper>
+            <ListItemWrapper>
+              <ListItem>
+                <ListAnchor to="/work">
+                  <Span>Work</Span>
+                </ListAnchor>
+              </ListItem>
+            </ListItemWrapper>
+            <ListItemWrapper>
+              <ListItem>
+                <ListAnchor to="/contact">
+                  <Span>Contact</Span>
+                </ListAnchor>
+              </ListItem>
+            </ListItemWrapper>
+          </List>
+        </Links>
+        {/* <Icons>
                   <Icon src='./images/search.png'/>
                   <Button href='#contact'>Hire Now</Button>
               </Icons> */}
-              
-          </Container>
-      </Section>
-  )
+      </Container>
+    </Section>
+  );
 }
 
 export default Nav2

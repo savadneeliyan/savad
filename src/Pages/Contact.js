@@ -1,73 +1,122 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components'
+import Footer from '../Components/Footer';
+import Nav2 from '../Components/Nav2';
 
 function Contact() {
   return (
     <>
-        <Section>
-            <AnimatePresence >
-                <Start animate={{
-                    left: "auto",
-                    right: 0,
-                    width: "0",
-                    transition: { duration: 0.5 },
-                }}></Start>
-            </AnimatePresence>
-            <div style={{position:"absolute",  transform: "rotate(-90deg)", top:"50%", left:"50px", margin:"auto" }}>
-                <Overflow style={{position:"relative", marginBottom:"60px"}}>
-                    <motion.div
-                        initial={{
-                            width: "0%",
-                            top: 0,
-                            height: "100%",
-                            position: "absolute",
-                            background: "#000",
-                        }}
-                        whileInView={{ width: "100%", x: ["0%", "0%", "0%", "100%"] }}
-                        transition={{ duration: 1 }}
-                        viewport={{ once: true }}
-                    ></motion.div>
-                    <Side initial={{y:10}} whileInView={{y:0}} transition={{delay:1, transition:1}}> CONTACT </Side>
-                </Overflow>
-            </div>
+      <Nav2 />
+      <Section>
 
-            <Container>
+          <motion.div
+            className="page"
+            key="index"
+            exit={{ width: "100%", transition: { duration: 1 } }}
+        ></motion.div>
+        
+        <AnimatePresence>
+          <Start
+            animate={{
+              left: "auto",
+              right: 0,
+              width: "0",
+              transition: { duration: 0.5 },
+            }}
+          ></Start>
+        </AnimatePresence>
 
-                <div style={{paddingTop:"350px"}}>
-                    <Overflow style={{position:"relative", marginBottom:"60px"}}>
-                        <motion.div
-                            initial={{
-                                width: "0%",
-                                top: 0,
-                                height: "100%",
-                                position: "absolute",
-                                background: "#000",
-                            }}
-                            whileInView={{ width: "100%", x: ["0%", "0%", "0%", "100%"] }}
-                            transition={{ duration: 1 }}
-                            viewport={{ once: true }}
-                        ></motion.div>
-                        <H2  initial={{y:60}} whileInView={{y:0}} transition={{delay:1, transition:1}}> Get in touch. </H2>
-                    </Overflow>
-                    <Overflow  style={{marginBottom:"100px"}}>
-                        <P  initial={{ y:30}} whileInView={{y:0}} transition={{delay:1, transition:1}}> Do you fancy saying hi to me or you want to get started with your project and you need my help? Feel free to contact me. </P>
-                    </Overflow>
-                </div>
-                <motion.div initial={{opacity:0, y:30}} whileInView={{y:0, opacity:1}} transition={{delay:1, transition:1}}>
-                    <Label>Your Name</Label>
-                    <Input type="text" />
-                    <Label>Your email</Label>
-                    <Input type="email" />
-                    <Label>Subject</Label>
-                    <Input type="text" />
-                    <Label>Message</Label>
-                    <Input type="textarea" style={{height:"200px"}} />
-                </motion.div>
-            </Container>
-        </Section>
+
+        <div
+          style={{
+            position: "absolute",
+            transform: "rotate(-90deg)",
+            top: "50%",
+            left: "50px",
+            margin: "auto",
+          }}
+        >
+          <Overflow style={{ position: "relative", marginBottom: "60px" }}>
+            <motion.div
+              initial={{
+                width: "0%",
+                top: 0,
+                height: "100%",
+                position: "absolute",
+                background: "#000",
+              }}
+              whileInView={{ width: "100%", x: ["0%", "0%", "0%", "100%"] }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            ></motion.div>
+            <Side
+              initial={{ y: 10 }}
+              whileInView={{ y: 0 }}
+              transition={{ delay: 1, transition: 1 }}
+              viewport={{ once: true }}
+            >
+              CONTACT
+            </Side>
+          </Overflow>
+        </div>
+
+        <Container>
+          <div style={{ paddingTop: "350px" }}>
+            <Overflow style={{ position: "relative", marginBottom: "60px" }}>
+              <motion.div
+                initial={{
+                  width: "0%",
+                  top: 0,
+                  height: "100%",
+                  position: "absolute",
+                  background: "#000",
+                }}
+                whileInView={{ width: "100%", x: ["0%", "0%", "0%", "100%"] }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              ></motion.div>
+              <H2
+                initial={{ y: 60 }}
+                whileInView={{ y: 0 }}
+                transition={{ delay: 1, transition: 1 }}
+                viewport={{ once: true }}
+              >
+                Get in touch.
+              </H2>
+            </Overflow>
+            <Overflow style={{ marginBottom: "100px" }}>
+              <P
+                initial={{ y: 30 }}
+                whileInView={{ y: 0 }}
+                transition={{ delay: 1, transition: 1 }}
+                viewport={{ once: true }}
+              >
+                Do you fancy saying hi to me or you want to get started with
+                your project and you need my help? Feel free to contact me.{" "}
+              </P>
+            </Overflow>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1, transition: 1 }}
+            viewport={{ once: true }}
+          >
+            <Label>Your Name</Label>
+            <Input type="text" />
+            <Label>Your email</Label>
+            <Input type="email" />
+            <Label>Subject</Label>
+            <Input type="text" />
+            <Label>Message</Label>
+            <Input type="textarea" style={{ height: "200px", marginBottom:"100px" }} />
+          </motion.div>
+        </Container>
+      </Section>
+      <Footer />
     </>
-  )
+  );
 }
 
 export default Contact;

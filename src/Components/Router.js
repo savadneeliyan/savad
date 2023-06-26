@@ -6,6 +6,7 @@ import PageNotFound from "../Pages/PageNotFound";
 import { AnimatePresence } from 'framer-motion';
 import Projectpage from '../Pages/Projectpage';
 import Contact from '../Pages/Contact';
+import Work from '../Pages/Work';
 
 function Router() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function Router() {
           <Route path="/about" element={<About />} />
           <Route path="/us" element={<Projectpage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/work" element={<Work />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AnimatePresence>
