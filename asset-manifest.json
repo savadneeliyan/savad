@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/savadneeliyan/savad/static/css/main.89e278a5.css",
+    "main.js": "/savadneeliyan/savad/static/js/main.643be4c9.js",
+    "index.html": "/savadneeliyan/savad/index.html",
+    "main.89e278a5.css.map": "/savadneeliyan/savad/static/css/main.89e278a5.css.map",
+    "main.643be4c9.js.map": "/savadneeliyan/savad/static/js/main.643be4c9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89e278a5.css",
+    "static/js/main.643be4c9.js"
+  ]
+}
